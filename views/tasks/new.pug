@@ -1,0 +1,52 @@
+html 
+    head
+        title New task
+        link(rel="stylesheet", href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.css")
+    body
+        .conatiner
+            .columns.is-centered.mt-5
+            .coulumn.is-6
+                form.field(id="taskForm", method="POST")  
+                    
+                    label.label(for="name:") Name
+                    .control
+                        input.input(type="text" name="name" id="name")
+                    label.label(for="description", name="description") Description
+                    .control
+                        textarea.textarea(name="description", cols="30", rows="10", id="description") 
+                    button.button.is-success.mt-4(type="submit") Save
+        
+        block script
+            script(type='text/javascript').
+
+                let handleSubmit = (e)=>{
+                    e.preventDefault()
+                    let name = document.querySelector("#name").value
+                    let description = document.querySelector("#description").value
+                    
+                    fetch("http://localhost:3000/api/tasks",
+                    {
+                        method: "POST",
+                        body:JSON.stringify({ id: crypto.randomUUID(),
+                        name: name,
+                        description:description}),
+                        headers:{
+                            'Content-Type': 'application/json'
+                        }  
+                    }
+                    ).then(res=>res.json())
+                    .catch(err=>console.log(err))
+                    .then(response => {
+                        alert(`Success: ${response.message}`)
+                        document.querySelector("#name").value = ''
+                        document.querySelector("#description").value = ''
+                        })
+
+                    
+                    
+                }
+
+                const form = document.querySelector('#taskForm');
+                form.addEventListener('submit', handleSubmit);
+            
+           

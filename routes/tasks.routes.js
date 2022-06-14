@@ -6,6 +6,9 @@ let router = express.Router()
 router.route('/tasks')
   .get(new TaskController().home)
 
+router.route('/tasks/new')
+  .get(new TaskController().new)
+
 
 //  router.route('/:id', TaskController.show)
 

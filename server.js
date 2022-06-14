@@ -8,6 +8,7 @@ const app = express()
 let tasksRoutes = require('./routes/tasks.routes')
 
 app.use(express.json())
+app.use('/assets', express.static('assets'))
 
 app.set('view engine', 'pug')
 

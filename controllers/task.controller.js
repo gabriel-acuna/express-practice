@@ -27,8 +27,11 @@ class TaskController {
 
     async getTasks(req, res) {
         let tasks = await new TaskService1().getTasks()
-        console.log(tasks);
         res.send(tasks)
+    }
+
+    new(ree, res) {
+        res.render('tasks/new')
     }
 }
 
