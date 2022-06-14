@@ -5,7 +5,11 @@ const PORT = 3000
 
 const app = express()
 
+let tasks = require('./routes/tasks.routes')
+
 app.use(express.json())
+
+app.set('view engine', 'pug')
 
 app.post('/tasks', async (req, res)=>{
    try {
@@ -26,4 +30,5 @@ app.post('/tasks', async (req, res)=>{
    }
 })
 
+app.use('/tasks-mvc', tasks)
 app.listen(PORT)

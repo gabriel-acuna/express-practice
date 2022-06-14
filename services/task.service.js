@@ -1,4 +1,4 @@
-const TaskModel = require('../models/task1').TaskModel
+const TaskModel = require('../mod/task1').TaskModel
 const dbConnection = require('../database/db-conn').pool
 
 class TaskService {
