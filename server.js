@@ -5,7 +5,7 @@ const PORT = 3000
 
 const app = express()
 
-let tasks = require('./routes/tasks.routes')
+let tasksRoutes = require('./routes/tasks.routes')
 
 app.use(express.json())
 
@@ -30,5 +30,5 @@ app.post('/tasks', async (req, res)=>{
    }
 })
 
-app.use('/tasks-mvc', tasks)
+app.use(tasksRoutes)
 app.listen(PORT)
