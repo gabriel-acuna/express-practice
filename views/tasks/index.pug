@@ -1,8 +1,16 @@
-html 
-    head
-        title Tasks
-    body 
-        each task in tasks 
-            div.card
-                p=task.name
-                p=task. description
+extends ../layout.pug
+
+block append head
+    title Tasks
+
+block append content
+    .container
+        .columns.is-multiline.is-centered.mt-5
+            each task in tasks 
+                .column.is-3
+                    .card
+                        .card-header
+                            .card-header-title=task.name
+                                a.button.is-small.ml-2.is-primary(href="/task/edit") Editar
+
+                        .card-content=task.description

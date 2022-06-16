@@ -33,6 +33,12 @@ class TaskController {
     new(ree, res) {
         res.render('tasks/new')
     }
+
+    async getTask(req, res){
+        let { id } = req.params
+        let task = await new TaskService1().getTask(id)
+        res.json(task)
+    }
 }
 
 module.exports = {

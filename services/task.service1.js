@@ -1,6 +1,4 @@
 const Task = require('../models').Task
-const DatabaseConnection = require('../database/config').DatabaseConnection
-
 
 class TaskService1 {
     async persistTask(task) {
@@ -23,6 +21,19 @@ class TaskService1 {
         let tasks = await Task.findAll()
         return tasks.map((row) => row['dataValues'])
 
+    }
+    async getTask(id) {
+        let task = await Task.findByPk(id)
+        return task
+    }
+    async updateTask(id, task) {
+        let updateTask = await Task.update(
+            task, {
+            where: {
+                id: id
+            }
+        }
+        )
     }
 }
 

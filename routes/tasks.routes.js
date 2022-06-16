@@ -16,4 +16,7 @@ router.route('/api/tasks')
   .get(new TaskController().getTasks)
   .post(new TaskController().save)
 
+router.route('/api/tasks/:id')
+  .get(new TaskController().getTask)
+
 module.exports = router
