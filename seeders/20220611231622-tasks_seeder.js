@@ -16,31 +16,31 @@ module.exports = {
       {
         id: uuidv4(),
         name: 'Task 1',
-        description: 'thist is the task number 1',
+        description: 'This is the task number 1',
         createdAt: new Date(),
         updatedAt: new Date()
       }, {
         id: uuidv4(),
         name: 'Task 2',
-        description: 'thist is the task number 2',
-        createdAt: new Date(),
-        updatedAt: new Date()
-      }, {
-        id: uuidv4(),
-        name: 'Task 2',
-        description: 'thist is the task number 2',
+        description: 'This is the task number 2',
         createdAt: new Date(),
         updatedAt: new Date()
       }, {
         id: uuidv4(),
         name: 'Task 3',
-        description: 'thist is the task number 3',
+        description: 'This is the task number 3',
         createdAt: new Date(),
         updatedAt: new Date()
       }, {
         id: uuidv4(),
         name: 'Task 4',
-        description: 'thist is the task number 4',
+        description: 'This is the task number 4',
+        createdAt: new Date(),
+        updatedAt: new Date()
+      }, {
+        id: uuidv4(),
+        name: 'Task 5',
+        description: 'This is the task number 5',
         createdAt: new Date(),
         updatedAt: new Date()
       }

@@ -9,8 +9,8 @@ router.route('/tasks')
 router.route('/tasks/new')
   .get(new TaskController().new)
 
-
-//  router.route('/:id', TaskController.show)
+router.route('/tasks/:id/edit')
+  .get(new TaskController().edit)
 
 router.route('/api/tasks')
   .get(new TaskController().getTasks)
@@ -18,5 +18,10 @@ router.route('/api/tasks')
 
 router.route('/api/tasks/:id')
   .get(new TaskController().getTask)
+
+router.route('/api/tasks/:id')
+.put(
+  new TaskController().updateTask
+)
 
 module.exports = router

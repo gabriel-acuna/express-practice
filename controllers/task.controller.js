@@ -14,14 +14,13 @@ class TaskController {
     }
 
     async save(req, res) {
-        console.log(req.body);
         let response = await new TaskService1().persistTask(req.body)
-        if (!response){
+        if (!response) {
             res.status(422)
-            res.send({message: 'Something go worng!'})
+            res.send({ message: 'Something go worng!' })
         }
         res.status(201)
-        res.send({message:'Task has been created'})
+        res.send({ message: 'Task has been created' })
 
     }
 
@@ -34,10 +33,26 @@ class TaskController {
         res.render('tasks/new')
     }
 
-    async getTask(req, res){
+    async getTask(req, res) {
         let { id } = req.params
         let task = await new TaskService1().getTask(id)
         res.json(task)
+    }
+    async edit(req, res) {
+        let task = await new TaskService1().getTask(req.params.id)
+        res.render('tasks/edit', { task })
+    }
+
+    async updateTask(req, res) {
+        console.log(req.parms);
+        let response = await new TaskService1().updateTask(req.params.id, req.body)
+        if (!response) {
+            res.status(422)
+            res.send({ message: 'Something go worng!' })
+        }
+        res.status(200)
+        res.send({ message: 'Task has been update', data: req.body })
+        
     }
 }
 

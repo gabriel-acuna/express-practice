@@ -11,6 +11,6 @@ block append content
                     .card
                         .card-header
                             .card-header-title=task.name
-                                a.button.is-small.ml-2.is-primary(href="/task/edit") Editar
+                                a.button.is-small.ml-2.is-primary(href=`/tasks/${task.id}/edit`) Edit
 
                         .card-content=task.description

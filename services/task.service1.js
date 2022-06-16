@@ -27,13 +27,22 @@ class TaskService1 {
         return task
     }
     async updateTask(id, task) {
-        let updateTask = await Task.update(
-            task, {
-            where: {
-                id: id
+        try {
+            let updatedTask = await Task.update(
+                task, {
+                where: {
+                    id: id
+                }
             }
+            )
+            console.log(updatedTask);
+            return true
         }
-        )
+        catch(error){
+            console.error(error)
+            return false
+        }
+
     }
 }
 
