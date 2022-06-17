@@ -12,6 +12,8 @@ app.use('/assets', express.static('assets'))
 
 app.set('view engine', 'pug')
 
+app.get('/', (req,res)=>res.redirect('/tasks'))
+
 app.post('/tasks', async (req, res)=>{
    try {
     let task = {

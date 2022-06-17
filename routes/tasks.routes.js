@@ -22,6 +22,6 @@ router.route('/api/tasks/:id')
 router.route('/api/tasks/:id')
 .put(
   new TaskController().updateTask
-)
+).delete( new TaskController().deleteTask)
 
 module.exports = router

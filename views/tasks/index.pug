@@ -2,6 +2,7 @@ extends ../layout.pug
 
 block append head
     title Tasks
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css")
 
 block append content
     .container
@@ -11,6 +12,35 @@ block append content
                     .card
                         .card-header
                             .card-header-title=task.name
-                                a.button.is-small.ml-2.is-primary(href=`/tasks/${task.id}/edit`) Edit
+                                a.button.is-small.ml-2.is-primary.is-outlined(href=`/tasks/${task.id}/edit` title="Edit") #[i.fa-regular.fa-pen-to-square]
+                                button.button.is-small.ml-2.is-danger.is-outlined(title="Delete" id="deleteButton" data-parm=task.id type="button" onclick="handleClick(this)") #[i.fa-regular.fa-trash-can]
 
                         .card-content=task.description
+    block script
+        script(type='text/javascript').
+
+            let handleClick = (btn)=>{
+                let id = btn.dataset.parm
+
+                fetch(`http://localhost:3000/api/tasks/${id}`,
+                    {
+                        method: "DELETE"
+                    }
+                    ).then(res=>{
+                        let response = res.json()
+                        if(res.status !==200){
+                            console.error(response.message)
+                        }
+                        return response
+                        
+                    })
+                    .catch(err=>console.log(err))
+                    .then(response => {
+                        alert(`Success: ${response.message}`)
+                        document.querySelector("#name").value = ''
+                        document.querySelector("#description").value = ''
+                        document.location.reload(1)
+                        })
+                }
+
+            

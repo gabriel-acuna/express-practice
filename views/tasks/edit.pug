@@ -6,16 +6,16 @@ block append head
 block append content
     .container
         .columns.is-centered.mt-5
-        .column.is-6
-            form.field(id="taskForm", method="POST")  
-                task.name
-                label.label(for="name:") Name
-                .control
-                    input.input(type="text" name="name" id="name" value=task.name)
-                label.label(for="description", name="description") Description
-                .control
-                    textarea.textarea(name="description", cols="30", rows="10", id="description")=task.description
-                button.button.is-success.mt-4(type="submit") Save
+            .column.is-6
+                form.field(id="taskForm", method="POST")  
+                    task.name
+                    label.label(for="name:") Name
+                    .control
+                        input.input(type="text" name="name" id="name" value=task.name)
+                    label.label(for="description", name="description") Description
+                    .control
+                        textarea.textarea(name="description", cols="30", rows="10", id="description")=task.description
+                    button.button.is-success.mt-4(type="submit") Save
     
     block script
     script(type='text/javascript').

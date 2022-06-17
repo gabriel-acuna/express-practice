@@ -44,15 +44,25 @@ class TaskController {
     }
 
     async updateTask(req, res) {
-        console.log(req.parms);
         let response = await new TaskService1().updateTask(req.params.id, req.body)
         if (!response) {
             res.status(422)
             res.send({ message: 'Something go worng!' })
         }
         res.status(200)
-        res.send({ message: 'Task has been update', data: req.body })
+        res.send({ message: 'Task has been updated', data: req.body })
         
+    }
+
+    async deleteTask(req, res) {
+        console.log(req.params);
+        let response = await new TaskService1().deleteTask(req.params.id)
+        if(!response){
+            res.status(422)
+            res.send({ message: 'Something go worng!' })
+        }
+        res.status(200)
+        res.send({ message: 'Task has been deleted' })
     }
 }
 
