@@ -3,7 +3,7 @@ const TaskModel = require('../models/task').Task
 const TaskService1 = require('../services/task.service1').TaskService1
 
 class TaskController {
-    async home(req, res) {
+    static async home(req, res) {
 
         try {
             let tasks = await new TaskService1().getTasks()
@@ -13,7 +13,7 @@ class TaskController {
         }
     }
 
-    async save(req, res) {
+    static async save(req, res) {
         let response = await new TaskService1().persistTask(req.body)
         if (!response) {
             res.status(422)
@@ -24,26 +24,26 @@ class TaskController {
 
     }
 
-    async getTasks(req, res) {
+    static async getTasks(req, res) {
         let tasks = await new TaskService1().getTasks()
         res.send(tasks)
     }
 
-    new(ree, res) {
+    static new(req, res) {
         res.render('tasks/new')
     }
 
-    async getTask(req, res) {
+    static async getTask(req, res) {
         let { id } = req.params
         let task = await new TaskService1().getTask(id)
         res.json(task)
     }
-    async edit(req, res) {
+    static async edit(req, res) {
         let task = await new TaskService1().getTask(req.params.id)
         res.render('tasks/edit', { task })
     }
 
-    async updateTask(req, res) {
+    static async updateTask(req, res) {
         let response = await new TaskService1().updateTask(req.params.id, req.body)
         if (!response) {
             res.status(422)
@@ -54,7 +54,7 @@ class TaskController {
         
     }
 
-    async deleteTask(req, res) {
+    static async deleteTask(req, res) {
         console.log(req.params);
         let response = await new TaskService1().deleteTask(req.params.id)
         if(!response){

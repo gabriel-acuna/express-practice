@@ -37,9 +37,7 @@ block append content
                     .catch(err=>console.log(err))
                     .then(response => {
                         alert(`Success: ${response.message}`)
-                        document.querySelector("#name").value = ''
-                        document.querySelector("#description").value = ''
-                        document.location.reload(1)
+                        document.location.reload()
                         })
                 }
 

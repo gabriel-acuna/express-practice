@@ -6,6 +6,7 @@ const PORT = 3000
 const app = express()
 
 let tasksRoutes = require('./routes/tasks.routes')
+let registrationsRoutes = require('./routes/resgistrations.routes')
 
 app.use(express.json())
 app.use('/assets', express.static('assets'))
@@ -34,4 +35,5 @@ app.post('/tasks', async (req, res)=>{
 })
 
 app.use(tasksRoutes)
+app.use(registrationsRoutes)
 app.listen(PORT)

@@ -1,0 +1,22 @@
+extends ../layout
+
+block append head 
+    title Sign Up
+
+block append content
+    .conatiner 
+        .columns.is-centered
+            .column.is-4.mt-4
+               .box
+                     form.field.mb-6(id="registerForm", method="POST")  
+                
+                        label.label(for="email:") Email
+                        .control
+                            input.input(type="email" name="email" id="email" required)
+                        label.label(for="password", name="password") Password
+                        .control
+                            input.input(type="password", name="password", id="password" required)
+                        label.label(for="password_confirm", name="password_confirm") Confirm Password
+                        .control
+                            input.input(type="password", name="password", id="password" required)
+                        button.button.is-success.mt-4.is-pulled-right(type="submit") Sign Up
